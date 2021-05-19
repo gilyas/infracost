@@ -1,0 +1,85 @@
+local + path
+CI + path
+
+repo url, path within repo, terraform workspace
+gitlab.com:infracost/services terraform (dev)
+
+absolute path, terraform workspace
+project_x2fer (dev)
+
+
+
+check INFRACOST_PROJECT_NAME
+
+check env INFRACOST_VCS_REPO
+
+if that's not set in the go code:
+cwd = dir(--path)
+run `git remote -v`
+
+pwd - git rev-parse --show-toplevel
+
+terraform workspace show
+
+
+check Spacelift docs
+
+runId: "",
+projects: [
+  {
+    name: "gitlab.com/infracost/services/terraform (dev)",
+    resultId: ""
+    metadata: {
+      vcsRepoUrl: "https://gitlab.com/infracost/services",
+      vcsDirectory: "terraform",
+      terraformWorkspace: "dev",
+      vcsPullRequestUrl: "https://gitlab.com/infracost/services/pulls/3",
+      type: "terraform_dir"
+    }
+    breakdown:
+    pastBreakdown:
+    diff:
+  }
+]
+
+{
+  name: "gitlab.com/infracost/infra/dev"
+  metadata: {
+    vcsRepoUrl: "https://gitlab.com/infracost/infra",
+    vcsDirectory: "dev",
+  }
+}
+
+{
+  name: "Project xyz"
+  metadata: {
+    path: "code/infracost/infra/dev"
+  }
+}
+
+Rename context.metadata -> context.environment
+
+
+
+
+
+
+
+
+
+{
+  name: "gitlab.com/infracost/services/terraform (dev)"
+  metadata: {
+    path: "code/infracost/services/terraform",
+    vcsRepo: "https://gitlab.com/infracost/infra",
+    vcsSubdirectory: "dev",
+    terraformWorkspace: "dev"
+  }
+}
+
+{
+  path: "code/infracost/services/terraform",
+  metadata: {
+    terraformWorkspace: "dev"
+  }
+}
