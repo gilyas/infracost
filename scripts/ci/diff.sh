@@ -221,7 +221,7 @@ post_to_azure_devops () {
     elif [ "$BUILD_REPOSITORY_PROVIDER" = "TfsGit" ]; then
       echo "Posting comment to Azure DevOps repo pull-request $SYSTEM_PULLREQUEST_PULLREQUESTID"
       msg="$(build_msg true)"
-      jq -Mnc --arg msg "$msg" '{"comments": [{"parentCommentId": 0, "content": "\($msg)", "commentType": 1}], "status": 4}' | curl -L -X POST -d @- \
+      jq -Mnc --arg msg "$msg" '{"comments": [{"parentCommentId": 0, "content": "\($msg)", "commentType": 1}], "status": 4}' | curl -i -v -L -X POST -d @- \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $SYSTEM_ACCESSTOKEN" \
         "$SYSTEM_COLLECTIONURI$SYSTEM_TEAMPROJECT/_apis/git/repositories/$BUILD_REPOSITORY_ID/pullRequests/$SYSTEM_PULLREQUEST_PULLREQUESTID/threads?api-version=6.0"
